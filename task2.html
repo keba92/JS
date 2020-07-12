@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    .form1{
+      display: none;
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+<p class="form1">Удаленно! Обраьтьесь к системному администратору!</p>
+<form class="delForm1" name="search">
+  <label>Поиск по сайту:
+    <input type="text" name="search">
+  </label>
+  <input type="submit" value="Искать!">
+</form>
+
+<button onclick="delForm1()">Заменить</button>
+
+<hr>
+
+<button onclick="delForm2()">Заменить</button>
+<form class="delForm2" name="search-person">
+  Поиск по посетителям:
+  <table id="age-table">
+    <tr>
+      <td>Возраст:</td>
+      <td id="age-list">
+        <label>
+          <input type="radio" name="age" value="young">до 18</label>
+        <label>
+          <input type="radio" name="age" value="mature">18-50</label>
+        <label>
+          <input type="radio" name="age" value="senior">более 50</label>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Дополнительно:</td>
+      <td>
+        <input type="text" name="info[0]">
+        <input type="text" name="info[1]">
+        <input type="text" name="info[2]">
+      </td>
+    </tr>
+
+  </table>
+
+  <input type="submit" value="Искать!">
+</form>
+<script>
+  function delForm1(){
+    let parag = document.querySelector(".form1");
+    parag.style.display = "block";
+    let formDel1 = document.querySelector(".delForm1");
+    formDel1.style.display = "none";
+  }
+
+  function delForm2 (){
+    let formDel2 = document.querySelector(".delForm2");
+    formDel2.style.display = "none";
+    let text1 = 'Это дополнительный контент -';
+    let arr = ["red", "blue", "yellow", "green", "purple"]
+    for (let i=0; i<5; i++){
+      let p = document.createElement("p");
+      p.innerHTML = text1 + (i+1);
+      p.style.color= arr[i]
+      document.body.append(p)
+    }
+  }
+</script>
+</body>
+
+</html>
