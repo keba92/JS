@@ -358,3 +358,20 @@ The tests contain some very huge arrays, so think about performance.*/
   findUniq([  1, 1, 2, 1, 1, 1 ])*/
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched. 
+ * Examples
+pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
+pigIt('Hello world !');     // elloHay orldway !*/
+
+/**function pigIt(str){
+    let simbal = " ";
+    let arr = str.split('').reverse()
+    arr.map((el, index)=>{
+        if (simbal === el){
+            arr[index-1]=arr[index-1]+"ay"
+        }
+    })
+    arr.push("ay")
+    return arr.join('');
+  }
+  pigIt('Pig latin is cool');*/
