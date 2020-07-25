@@ -414,3 +414,54 @@ Have fun! */
     return finalArray.reverse();
   }
   console.log(towerBuilder(5));*/
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /**Write a function toWeirdCase (weirdcase in Ruby) that accepts a string, and returns the same string with all even indexed characters in each word upper cased, and all odd indexed characters in each word lower cased. The indexing just explained is zero based, so the zero-ith index is even, therefore that character should be upper cased.
+
+The passed in string will only consist of alphabetical characters and spaces(' '). Spaces will only be present if there are multiple words. Words will be separated by a single space(' '). */
+
+/**function toWeirdCase(string){
+    let newString = string.toLowerCase().split(/\s/).map((el,index) =>{
+        let newEl = el.split('').map((e,index)=>{
+            if (index==0||index%2 ==0){
+                return e.toUpperCase();
+            }
+            else{
+                return e;
+            }
+        })
+        return newEl.join('');
+    });
+    return newString.join(" ");
+}
+toWeirdCase( "Weird string case" );*/
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**The main idea is to count all the occurring characters in a string. If you have a string like aba, then the result should be {'a': 2, 'b': 1}.
+
+What if the string is empty? Then the result should be empty object literal, {}. */
+
+/**function count (string) {
+    let obj = {};
+    let newStr = string.split('');
+    newStr.map((el)=>{
+        let cunt = newStr.filter(e=>e.indexOf(el)>-1).length
+        let key = el
+        obj[key] = cunt;
+    })
+    return obj;
+  }
+  count("");*/
+  ////////////////////////////////////////////////////////////////////////////////////////
+/**Snail Sort
+Given an n x n array, return the array elements arranged from outermost elements to the middle element, traveling clockwise.
+
+array = [[1,2,3],
+         [4,5,6],
+         [7,8,9]]
+snail(array) #=> [1,2,3,6,9,8,7,4,5]
+For better understanding, please follow the numbers of the next array consecutively:
+
+array = [[1,2,3],
+         [8,9,4],
+         [7,6,5]]
+snail(array) #=> [1,2,3,4,5,6,7,8,9] */
