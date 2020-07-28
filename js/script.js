@@ -521,3 +521,185 @@ var sum_pairs=function(ints, s){
 }
 
 sum_pairs([1, -2, 3, 0, -6, 1], -6);*/
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**We want to create a function that will add numbers together when called in succession.
+
+add(1)(2);
+// returns 3
+We also want to be able to continue to add numbers to our chain.
+
+add(1)(2)(3); // 6
+add(1)(2)(3)(4); // 10
+add(1)(2)(3)(4)(5); // 15
+and so on.
+
+A single call should return the number passed in.
+
+add(1); // 1
+We should be able to store the returned values and reuse them.
+
+var addTwo = add(2);
+addTwo; // 2
+addTwo + 5; // 7
+addTwo(3); // 5
+addTwo(3)(5); // 10
+We can assume any number being passed in will be valid whole number. */
+
+/**let arr =[];
+function add(n){
+   arr.push(n)
+   let total = arr.reduce((sum,num)=>sum+num,0);
+   console.log(total)
+}
+add(1)(2);*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**Consider a sequence u where u is defined as follows:
+
+The number u(0) = 1 is the first one in u.
+For each x in u, then y = 2 * x + 1 and z = 3 * x + 1 must be in u too.
+There are no other numbers in u.
+Ex: u = [1, 3, 4, 7, 9, 10, 13, 15, 19, 21, 22, 27, ...]
+
+1 gives 3 and 4, then 3 gives 7 and 10, 4 gives 9 and 13, then 7 gives 15 and 22 and so on...
+
+Task:
+Given parameter n the function dbl_linear (or dblLinear...) returns the element u(n) of the ordered (with <) sequence u (so, there are no duplicates).
+
+Example:
+dbl_linear(10) should return 22
+
+Note:
+Focus attention on efficiency */
+
+/**
+function dblLinear(n) {
+    let arr = [1];
+    for (let i=0; i<n; i++){
+        let y = (2 * arr[i]) + 1;
+        let z = (3 * arr[i]) + 1;
+        arr.sort((a,b)=>a-b).push(y,z)
+        let num = arr.filter(el => (el == arr[i]))
+        if (num.length>1){
+            let idx = arr.findIndex((el,index)=>{
+                if(el == num[0]){
+                    return index;
+                }})
+                arr.splice(idx,1)
+        }
+     }
+     let n1= n+1;
+     let n2= arr.length-1;
+     arr.splice(n1, n2);
+    return arr[n];
+ }
+
+ dblLinear(50);*/
+
+ //////////////////////////////////////////////////////////////////////////////////////
+/**
+ function zero(n=0) {
+    let i = 0; 
+    if(n!=0){
+        let newI = i+n;
+        console.log(newI);
+    }
+    else{
+        return n;
+    }}
+function one(n=1) {
+    let i = 1; 
+    if(n!=1){
+        let newI = i+n;
+        console.log(newI);
+    }
+    else{
+        return n;
+    }}
+function two(n=2) {
+    let i = 2; 
+    if(n!=2){
+        let newI = i+n;
+        console.log(newI);
+    }
+    else{
+        return n;
+    }}
+function three(n=3) {
+    let i = 3; 
+    if(n!=3){
+        let newI = i+n;
+        console.log(newI);
+    }
+    else{
+        return n;
+    }}
+function four(n=4) {
+    let i = 4; 
+    if(n!=4){
+        let newI = i+n;
+        console.log(newI);
+    }
+    else{
+        return n;
+    }}
+function five(n=5) {
+    let i = 5; 
+    if(n!=5){
+        let newI = i+n;
+        console.log(newI);
+    }
+    else{
+        return n;
+    }}
+function six(n=6) {
+    let i = 6; 
+    if(n!=6){
+        let newI = i+n;
+        console.log(newI);
+    }
+    else{
+        return n;
+    }}
+function seven(n=7) {
+    let i = 7; 
+    if(n!=7){
+        let newI = i+n;
+        console.log(newI);
+    }
+    else{
+        return n;
+    }}
+function eight(n=8) {
+    let i = 8; 
+    if(n!=8){
+        let newI = i+n;
+        console.log(newI);
+    }
+    else{
+        return 8;
+    }}
+function nine(n=9) {
+    let i = 9; 
+    if(n!=9){
+        let newI = i+n;
+        console.log(newI);
+    }
+    else{
+        return n;
+    }}
+
+function plus(n) {return '+'+n;}
+function minus(n) {return '-'+n;}
+function times(n) {return '*'+n;}
+function dividedBy(n) {return '/'+n;}
+
+seven(times(five()));
+four(plus(nine()));
+eight(minus(three()));
+six(dividedBy(two())); */
+////////////////////////////////////////////////////////////////////////////////////////////////
+
