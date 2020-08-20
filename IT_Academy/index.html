@@ -7,14 +7,16 @@
 </head>
 <body>
     <script>
-        function fackt(num){
-            for(let i = num; i>=0; i--){
-                let final = 1;
-                final *=i
-            }
-            console.log(final)
+        function palindrom(str){
+            let newStr = str.split('').reverse().join('');
+             if (str == newStr){
+                console.log(`Строка "${str}" полиндром`)
+             } 
+             else {
+                console.log(`Строка "${str}"  не полиндром`)
+             }
         }
-        fackt(10);
+        palindrom("кок");
     </script>
 </body>
 </html>
