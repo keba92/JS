@@ -7,16 +7,36 @@
 </head>
 <body>
     <script>
-        function palindrom(str){
-            let newStr = str.split('').reverse().join('');
-             if (str == newStr){
-                console.log(`Строка "${str}" полиндром`)
-             } 
-             else {
-                console.log(`Строка "${str}"  не полиндром`)
-             }
+        function checkWord(str){
+            palindrom(str);
+            anagrams(str);
         }
-        palindrom("кок");
+
+        function palindrom(str){
+            let arr = str.toLowerCase().split(' ');
+            let arrPalindrom = [];
+            arr.map((el)=>{
+                if (el==el.split('').reverse().join('')&&el.length>1){
+                    arrPalindrom.push(el);
+                    console.log(`Длинна палиндрома: ${arrPalindrom.length}, Массив палиндромов: [${arrPalindrom}]`);
+                }
+            })
+        }
+        
+        function anagrams (str) {
+            let arr = str.toLowerCase().split(' ');
+            let arrAnagrams = [];
+            for(let i =0; i<arr.length; i++){
+                for (let j=i+1; j<arr.length; j++){
+                    if(arr[i].split('').sort().join('')==arr[j].split('').sort().join('')&&arr[j].length>2){
+                        arrAnagrams.push(arr[i]);
+                    }
+                }
+            }
+            console.log(`Длинна анаграммы: ${arrAnagrams.length}, Массив анаграмм: [${arrAnagrams}]`);
+        }
+
+        checkWord("на речке нуль мы построили шалаш и наблюдали лунь через Днесь и ели снедь")
     </script>
 </body>
 </html>
