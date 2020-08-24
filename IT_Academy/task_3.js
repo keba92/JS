@@ -1,8 +1,8 @@
 function getData(){
     fetch('https://www.nbrb.by/api/exrates/rates?periodicity=0')
-        .then(res=>res.json())
+        .then(response=>response.json())
         .then(data=>createTable(data))
-        .catch(() =>console.log("error"))
+        .catch(() =>alert("error"))
 }
 function createTable(data){
     let table = document.createElement('table');
@@ -10,8 +10,10 @@ function createTable(data){
         table.setAttribute('color', '000');
         table.setAttribute('width','500');
         table.setAttribute('height', '300');
+        table.setAttribute('align', 'center');
     let tbody = document.createElement('tbody');
     let tr = document.createElement('tr');
+        tr.setAttribute('bgcolor', '#C0C0C0');
         tr.innerHTML = '<th>Id</th><th>Дата обновления</th><th>Аббревиатура валюты</th><th>Количество единиц иностранной валюты</th><th>Наименование валюты</th><th>Установленый курс валют</th>';
         tbody.appendChild(tr);
     for (let i=0; i<data.length; i++){

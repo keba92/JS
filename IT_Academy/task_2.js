@@ -20,4 +20,27 @@
         i=0;
     }
 
-    /** Решение корявое, но я обещаю исправится :-)   */
+    /** Решение корявое_ так как счетчик перегружает оперативу, но я обещаю исправится :-)   */
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    /** Как и обещал, не много исправил счетчик исходя из математических расчетов (upd 23-08-2020)*/
+
+    function startKhanoi(){                                 
+        const data = document.querySelector('#vvod').value;   
+        khanoi(data);                                      
+    }
+
+    function khanoi(n){
+        if (n >0){                                          
+            khanoi(n-1);
+            khanoi(n-1);                                             
+        }
+        const count = Math.pow(2,n) - 1;
+        document.querySelector('#vivod').value = count;         
+    }
+
+    function clearResult(){                                 
+        document.querySelector('#vivod').value = "";
+        document.querySelector('#vvod').value = "";
+        i=0;
+    }
