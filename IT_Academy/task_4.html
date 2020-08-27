@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            padding-top: 10px;
+        }
+        input{
+            width: 600px;
+        }
+        button{
+            width: 100px;
+            font-size: 18px;
+            font-weight: bold;
+
+        }
+        #block{
+            width: 800px;
+            height: 500px;
+            border : 5px solid black;
+            margin: 0 auto;
+        }
+        #buttons{
+            padding-top: 20px;
+        }
+        h1{
+            text-decoration: overline;
+        }
+    </style>
+    <script src="task_4.js"></script>
+</head>
+<body>
+    
+<div id="block">
+    <div id="header" align = "center">
+        <h1>Симулятор гоночной игры</h1>
+    </div>
+    <div id="ABS" align = "center">
+        <h3>ABS</h3>
+        <input type="range" name="abs" id="abs" min="0" max="5" value="3">
+    </div>
+    <div id="Traction" align = "center">
+        <h3>Traction</h3>
+        <input type="range" name="traction" id="traction" min="0" max="5" value="3">
+    </div>
+    <div id="Stability" align = "center">
+        <h3>Stability</h3>
+        <input type="range" name="stability" id="stability" min="0" max="5" value="3">
+    </div>
+    <div id="buttons" align = "center">
+        <button onclick=lite()>Легкий</button>
+        <button onclick=medium()>Средний</button>
+        <button onclick=strong()>Тяжелый</button>
+    </div>
+</div>
+
+</body>
+</html>
