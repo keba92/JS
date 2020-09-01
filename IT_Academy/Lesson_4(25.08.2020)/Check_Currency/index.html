@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="task_5.js"></script>
+    <link rel="stylesheet" href="task_5.css">
+</head>
+<body>
+    <div id="choise" align = "center">
+        <p>Валюта: 
+            <select class = "curent" name="curent" id="curent" data-remote="true">
+            </select>
+            <button onclick=startCurent()>Показать</button><br/><br/>
+        </p>
+        <p class="choiseMounth">Выберите месяц:
+            <select name="mounth" id="mounth" onchange=choiseMounth()>
+                <option class="mounth" value="1">Январь</option>
+                <option class="mounth" value="2">Февраль</option>
+                <option class="mounth" value="3">Март</option>
+                <option class="mounth" value="4">Апрель</option>
+                <option class="mounth" value="5">Май</option>
+                <option class="mounth" value="6">Июнь</option>
+                <option class="mounth" value="7">Июль</option>
+                <option class="mounth" value="8">Август</option>
+            </select>
+        </p>
+    </div>
+    <figure class="highcharts-figure">
+    <div id="container"></div>
+    </figure>
+</body>
+</html>

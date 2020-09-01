@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function checkWord(str){
+            palindrom(str);
+            anagrams(str);
+        }
+
+        function palindrom(str){
+            let arr = str.toLowerCase().split(' ');
+            let arrPalindrom = [];
+            arr.map((el)=>{
+                if (el==el.split('').reverse().join('')&&el.length>1){
+                    arrPalindrom.push(el);
+                }
+            })
+            let answerP = `Длинна палиндрома: ${arrPalindrom.length}, Массив палиндромов: [${arrPalindrom}]`;
+            return answerP;
+        }
+        
+        function anagrams (str) {
+            let arr = str.toLowerCase().split(' ');
+            let arrAnagrams1 = [];
+            let arrAnagrams2 =[];
+            for(let i =0; i<arr.length; i++){
+                for (let j=i+1; j<arr.length; j++){
+                    if(arr[i].split('').sort().join('')==arr[j].split('').sort().join('')&&arr[j].length>2){
+                        arrAnagrams1.push(arr[i]);
+                        arrAnagrams2.push(arr[j])
+                    }
+                }
+            }
+            
+            for (let i =0; i<arrAnagrams1.length;i++){
+                let makeArr =`[${arrAnagrams1[i]}, ${arrAnagrams2[i]}]`;
+                let newStr = `[${arrAnagrams1[i-1]}, ${arrAnagrams2[i-1]}]` + makeArr;
+                var answerA = `Длинна анаграммы: ${arrAnagrams1.length}, Массив анаграмм: ${newStr}`;
+            }
+            return answerA;
+        }
+
+        checkWord("на кок речке Днесь мы построили шалаш и наблюдали лунь через нуль и ели снедь")
+    </script>
+</body>
+</html>

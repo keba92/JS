@@ -1,0 +1,38 @@
+#tamagochi{
+    padding-top: 20px;
+}
+
+.tamagochi{
+    display: inline-block;
+    text-align: center;
+    width: 300px;
+    height: 400px;
+    border: 1px solid gray;
+}
+
+button{
+    text-align: center;
+}
+
+#create{
+    margin: 0 auto;
+    width: 250px;
+    height: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 2px solid grey;
+    background-color: rgb(161, 151, 250);
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+
+#createBlock{
+    margin: 0 auto;
+    width: 300px;
+    height: 150px;
+    border: 2px solid grey;
+    background-color: rgb(247, 83, 96);
+}

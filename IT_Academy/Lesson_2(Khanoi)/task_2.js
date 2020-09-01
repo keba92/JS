@@ -1,4 +1,4 @@
-    let i = 0;                                              // Первоначальное количество перекладываний
+  /**  let i = 0;                                              // Первоначальное количество перекладываний
 
     function startKhanoi(){                                 // При нажатии "Расчитать" выполняется данная функция
         let data = document.querySelector('#vvod').value;   // Получаем данные из input с id = vvod 
@@ -18,7 +18,7 @@
         document.querySelector('#vivod').value = "";
         document.querySelector('#vvod').value = "";
         i=0;
-    }
+    }  */
 
     /** Решение корявое_ так как счетчик перегружает оперативу, но я обещаю исправится :-)   */
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,5 +42,4 @@
     function clearResult(){                                 
         document.querySelector('#vivod').value = "";
         document.querySelector('#vvod').value = "";
-        i=0;
     }
