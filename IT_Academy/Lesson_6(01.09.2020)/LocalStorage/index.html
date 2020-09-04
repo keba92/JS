@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="index.js"></script>
+    <style>
+        table{
+            border: 1px solid black;
+            color: #000000;
+            width: 500px;
+            height: 300px;
+        }
+        th{
+            background-color: #C0C0C0;
+        }
+        td{
+            border: 1px solid black;
+        }
+        button{
+            margin-left: 15px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+   <button onclick=getData()>Получить данные о курсах валют</button> <button onclick=clearStorage()>Очистить LocalStorage</button><br/>
+   <div id = "create"></div>
+</body>
+</html>
