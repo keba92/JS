@@ -1,25 +1,35 @@
+let urlName = 'https://www.nbrb.by/api/exrates/rates?periodicity=0';
+
+const myWorker = new Worker('../../Lesson_7/worker/worker.js')
 
 function getCurrencies() {
-    fetch('https://www.nbrb.by/api/exrates/rates?periodicity=0')
-        .then(response=>response.json())
-        .then(data=>createOption(data))
-        .catch(() =>alert("error"))
+    getData(urlName)
 }
 
 
-function getUrl(year, month, date) {
-    return `2020-${valueMounth}-1&endDate=2020-${valueMounth}-30`;
+function getData(url){
+    if(url == urlName){
+        myWorker.postMessage(url)
+        myWorker.onmessage= function(e){
+            createOption(e.data)
+        }
+    }
+    else{
+        myWorker.postMessage(url)
+        myWorker.onmessage= function(e){
+            createArr(e.data)
+        }
+    }
+       
 }
-
-const url = getUrl(2020, 08, 31);
+getCurrencies();
 
 function createOption(data){
-    let select = document.querySelector('#curent');
-    select.innerHTML='';
+    const select = document.querySelector('#curent');
 
     for (let i=0; i<data.length; i++){
         let obj = data[i];
-        let option = document.createElement('option');
+        const option = document.createElement('option');
         option.setAttribute('class', 'cur');
         option.text = obj['Cur_Name'];
         option.value = obj['Cur_ID'];
@@ -28,14 +38,12 @@ function createOption(data){
 
 }
 
-
 let nameCurent;
 let nameMounth = "Август";
 
-
 function choiseMounth(){
     let valueMounth;
-    let checkMounth = document.querySelectorAll('.mounth')
+    const checkMounth = document.querySelectorAll('.mounth')
 
     checkMounth.forEach(element => {
         if(element.selected){
@@ -50,7 +58,7 @@ function choiseMounth(){
 function startCurent(valueMounth = 8 ){
     document.querySelector('.choiseMounth').style.display = "block";
     let idCurent;
-    let checkOption = document.querySelectorAll('.cur');
+    const checkOption = document.querySelectorAll('.cur');
 
     checkOption.forEach(element => {
         if(element.selected){
@@ -70,28 +78,25 @@ function startCurent(valueMounth = 8 ){
     else{
         date = `2020-${valueMounth}-1&endDate=2020-${valueMounth}-31`;
     }
-
-    fetch(`https://www.nbrb.by/API/ExRates/Rates/Dynamics/${idCurent}?startDate=${date}`)
-        .then(response=>response.json())
-        .then(createArr)
-        .then(createChart)
-        .catch(error => alert(error))
+    let urlData = `https://www.nbrb.by/API/ExRates/Rates/Dynamics/${idCurent}?startDate=${date}`;
+    getData(urlData)
 
 }
-
-fun () {
-
-}
-
 
 function createArr(data){
     const arrData = [];
 
     for (let i=0; i<data.length; i++){
-        let obj = data[i];
+        const obj = data[i];
         arrData.push([obj['Date'], obj['Cur_OfficialRate']])
     }
+    createGraf(arrData)
+}
 
+
+
+function createGraf(data){
+    
     Highcharts.chart('container', {
         
         title: {
@@ -127,7 +132,7 @@ function createArr(data){
     
         series: [{
             name: nameCurent,
-            data: arrData
+            data: data
         }],
     
         responsive: {
@@ -149,5 +154,5 @@ function createArr(data){
     
 }
 
-getCurrencies();
+
 

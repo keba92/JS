@@ -1,0 +1,1 @@
+Worker for the task in the Lesson_4/Check_Currency folder.
