@@ -1,37 +1,92 @@
+const urlData = 'https://www.nbrb.by/API/ExRates/Rates/Dynamics/292?startDate=2020-8-1&endDate=2020-8-30';
+
 function getData(){
-    let key = localStorage.key('data');
-    (key)? createTable(JSON.parse(localStorage.getItem('data'))): getFetch();   
-}
-
-function getFetch(){
-    const url = 'https://www.nbrb.by/api/exrates/rates?periodicity=0'; 
-    fetch(url)
+    fetch(urlData)
         .then((response)=>response.json())
-        .then(data=>createTable(data))
-        .catch((error) =>alert(error))
+        .then(data=> createArr(data))
+        .catch((error) =>{
+            if (error){
+                createArr(JSON.parse(localStorage.getItem('292')))
+            }   
+        })
+}
+getData()
+
+
+function createArr(data){
+    const arrData = [];
+    
+    for (let i=0; i<data.length; i++){
+        const obj = data[i];
+        arrData.push([obj['Date'], obj['Cur_OfficialRate']])
+    }
+    localStorage.setItem(`292`, JSON.stringify(data))
+    return createGraf(arrData)
 }
 
-function createTable(data){
-    localStorage.setItem('data', JSON.stringify(data))
-    let table = document.createElement('table');
-        table.setAttribute('align', 'center');
-    let tbody = document.createElement('tbody');
-    let tr = document.createElement('tr');
-        tr.innerHTML = '<th>Id</th><th>Дата обновления</th><th>Аббревиатура валюты</th><th>Количество единиц иностранной валюты</th><th>Наименование валюты</th><th>Установленый курс валют</th>';
-        tbody.appendChild(tr);
-    for (let i=0; i<data.length; i++){
-        let tr = document.createElement('tr');
-        let obj = data[i];
-        for (let key in obj){
-            let td = document.createElement('td');
-            let item = obj[key];
-            td.innerHTML = item;
-            tr.appendChild(td);
+
+function clearStorage(){
+    localStorage.clear();
+}
+
+
+function createGraf(data){
+    
+    Highcharts.chart('container', {
+        
+        title: {
+            text: `Изменение курса Евро в Августе 2020 года`
+        },
+    
+        yAxis: {
+            title: {
+                text: 'Стоимость валюты'
+            }
+        },
+    
+        xAxis: {
+            title: {
+                text: 'Дата'
+            }
+        },
+    
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+    
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                pointStart: 1
+            }
+        },
+    
+        series: [{
+            name: "Евро",
+            data: data
+        }],
+    
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 1500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
         }
-        tbody.appendChild(tr);
-    }
-    table.appendChild(tbody);
-    document.querySelector('#create').appendChild(table);
+    
+    });
+    
 }
 
 function clearStorage(){

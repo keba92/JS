@@ -32,13 +32,13 @@ const url = `https://www.nbrb.by/api/exrates/rates/dynamics/298?startdate=2019-0
 
 function visualisation(data){
     const margin = {top:40, right:0, bottom:20, left:50},
-          width  = 954 - margin.left - margin.right,
-          height = 500 - margin.top - margin.bottom;
+          width  = 854 - margin.left - margin.right,
+          height = 300 - margin.top - margin.bottom;
 
     const svg = d3.select("body")
           .append("svg")
-          .attr("width", "100%")
-          .attr("height", "100%")
+          .attr("width", "95%")
+          .attr("height", "90%")
           .attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom));
 
     const chart = svg.append("g")
@@ -73,11 +73,11 @@ function visualisation(data){
             .append("text")
             .attr("class", "textlabel")
             .attr("x", function(d){ return xScale(d["rate"]) + (xScale.bandwidth()/2); })
-            .attr("y", function(d){ return yScale(d["specialRate"]) - 3; })
+            .attr("y", function(d){ return yScale(d["specialRate"])-1; })
             .attr("text-anchor", "middle")
             .attr("font-family", "sans-serif")
-            .attr("font-size", "10px")
-            .text(function(d){ return d3.format("")(d["specialRate"]); });
+            .attr("font-size", "7px")
+            .text(function(d){ return d3.format("")(d["specialRate"]); })
 
         svg.append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
@@ -85,13 +85,19 @@ function visualisation(data){
 
         svg.append("g")
             .attr("transform", "translate(" + margin.left + "," + (height + margin.top) + ")")
-            .call(d3.axisBottom(xScale));
-        
+            .call(d3.axisBottom(xScale))
+                .selectAll("text")
+                .style("font-size", "6px") 
+                .style("text-anchor", "end")
+                .attr("dx", "-.8em")
+                .attr("dy", ".15em")
+                .attr("transform", "rotate(-65)");
+            
         svg.append("g")
             .attr("transform", "translate(" + (width/2) + ", 15)")
             .append("text")
-            .text("Special Rate Histogramm (Russian Rubel)")
+            .text("Special Rate Histogram (Russian Rubel)")
             .style("text-anchor", "middle")
             .style("font-family", "Arial")
-            .style("font-weight", "800");
+            .style("font-weight", "bold");
 }
